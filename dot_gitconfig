@@ -1,0 +1,16 @@
+[push]
+  default = current
+[color]
+  ui = auto
+[diff]
+  tool = vimdiff
+[difftool]
+  prompt = false
+[include]
+  path = .gitconfig_private
+[core]
+  excludesfile = .gitignore_global
+[pull]
+	rebase = false
+[init]
+	defaultBranch = main
