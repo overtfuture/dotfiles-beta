@@ -1,0 +1,25 @@
+export ZSH="$HOME/.oh-my-zsh"
+
+ZSH_THEME="imajes"
+
+plugins=(git git-extras docker vi-mode marked2)
+ZSH_DISABLE_COMPFIX=true
+source $ZSH/oh-my-zsh.sh
+
+if [[ -n $SSH_CONNECTION ]]; then
+  export EDITOR='vim'
+else
+  export EDITOR='nvim'
+fi
+
+# Aliases
+alias zshrc="nvim ~/.zshrc"
+alias c="clear"
+alias gitclean="git rm -r --cached .;ga ."
+
+# fzf Ctrl-R
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+if [ -f ~/.zshrc_private ]; then
+  source ~/.zshrc_private
+fi
