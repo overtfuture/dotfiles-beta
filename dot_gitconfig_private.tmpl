@@ -1,9 +1,0 @@
-{{- onepasswordDocument "jdjypyylghhcwiq7f4lmfistgi" -}}
-{{ if (eq .chezmoi.os "darwin") }}
-[credential]
-	helper = osxkeychain
-{{ else if (eq .chezmoi.os "linux" ) }}
-# linux
-{{ else }}
-# other operating system
-{{ end }}
