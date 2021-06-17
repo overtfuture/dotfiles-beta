@@ -12,5 +12,17 @@
 	rebase = false
 [init]
 	defaultBranch = main
+[merge]
+    command = "vim"
+    args = "-d"
 [core]
   excludesfile = .gitignore_global
+{{- onepasswordDocument "jdjypyylghhcwiq7f4lmfistgi" -}}
+{{ if (eq .chezmoi.os "darwin") }}
+[credential]
+	helper = osxkeychain
+{{ else if (eq .chezmoi.os "linux" ) }}
+# linux
+{{ else }}
+# other operating system
+{{ end }}
