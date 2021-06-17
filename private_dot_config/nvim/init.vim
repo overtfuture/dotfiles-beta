@@ -76,6 +76,13 @@ set mouse=a
 if has("mouse_sgr")
   set ttymouse=sgr
 end
+
+"  ┏ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ┓
+"            Chezmoi Dotfiles           
+"  ┗ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ┛
+"
+autocmd BufWritePost ~/.local/share/chezmoi/* ! chezmoi apply --source-path %
+
 "
 "  ┏ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ┓
 "             User Interface            
