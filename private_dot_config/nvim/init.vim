@@ -5,6 +5,8 @@
 "
 if !empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
   call plug#begin('~/.nvim/plugged')
+  " Vim Airline
+  Plug 'vim-airline/vim-airline'
   " Nerd Tree
   Plug 'scrooloose/nerdtree'
   " Nerd Commenter <leader c>
@@ -26,6 +28,8 @@ if !empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
   Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
   " Marked.app
   Plug 'itspriddle/vim-marked'
+  " Nord Theme
+  Plug 'arcticicestudio/nord-vim'
   " Polygot Languages
   Plug 'hashivim/vim-terraform'
   Plug 'ekalinin/Dockerfile.vim'
@@ -77,6 +81,8 @@ end
 "             User Interface            
 "  ┗ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ┛
 "
+silent! colorscheme nord
+
 " Show line numbers
 set number
 " Show relative lines above and below
@@ -101,3 +107,42 @@ set shiftwidth=2
 set expandtab
 " Enable syntax highlighting
 syntax enable
+
+"
+"  ┏ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ┓
+"             Vim Airline            
+"  ┗ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ┛
+"
+
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
+
+" air-line
+let g:airline_powerline_fonts = 1
+
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+endif
+
+" unicode symbols
+let g:airline_left_sep = '»'
+let g:airline_left_sep = '▶'
+let g:airline_right_sep = '«'
+let g:airline_right_sep = '◀'
+let g:airline_symbols.linenr = '␊'
+let g:airline_symbols.linenr = '␤'
+let g:airline_symbols.linenr = '¶'
+let g:airline_symbols.branch = '⎇'
+let g:airline_symbols.paste = 'ρ'
+let g:airline_symbols.paste = 'Þ'
+let g:airline_symbols.paste = '∥'
+let g:airline_symbols.whitespace = 'Ξ'
+
+" airline symbols
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+let g:airline_symbols.branch = ''
+let g:airline_symbols.readonly = ''
+let g:airline_symbols.linenr = '  '
