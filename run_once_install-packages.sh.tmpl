@@ -1,11 +1,15 @@
 {{ if eq .chezmoi.os "linux" -}}
+
 #!/bin/sh
 
 sudo apt update
 sudo apt install ack fzf git git-delta grep htop neovim starship tmux tree vifm zsh
 sudo apt upgrade
+
 {{ if eq .chezmoi.os "darwin" -}}
+
 #!/bin/sh
 
 brew install ack chezmoi fzf git git-delta grep htop mosh neovim starship tmux tree vifm youtube-dl zsh
+
 {{ end -}}
