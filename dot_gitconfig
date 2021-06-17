@@ -8,9 +8,9 @@
   prompt = false
 [include]
   path = .gitconfig_private
-[core]
-  excludesfile = .gitignore_global
 [pull]
 	rebase = false
 [init]
 	defaultBranch = main
+[core]
+  excludesfile = .gitignore_global
