@@ -65,7 +65,7 @@ map('', '<leader>t', ':tabnew<cr>')
 map('', '<leader>w', ':q<cr>')
 map('', '<leader>j', ':split<cr>:resize 10<cr>:terminal<cr>i')
 map('', '<leader>p', ':Glow<cr>')
-map('', '<leader>s', ':terminal<cr>')
+map('', '<leader><cr>', ':terminal<cr>')
 
 -- OPTIONS
 wo.number = true
