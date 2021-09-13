@@ -15,7 +15,9 @@
     args = "-d"
 [core]
   excludesfile = .gitignore_global
+{{- if eq .chezmoi.username "nate" }}
 {{- onepasswordDocument "jdjypyylghhcwiq7f4lmfistgi" -}}
+{{- end }}
 {{ if (eq .chezmoi.os "darwin") }}
 [credential]
 	helper = osxkeychain
