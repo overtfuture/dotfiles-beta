@@ -8,6 +8,8 @@ My personal collection of dotfiles managed by [chezmoi](https://www.chezmoi.io).
 sh -c "$(curl -fsLS git.io/chezmoi)" -- init --apply overtfuture
 ```
 
+After applying, add a `$HOME/.zshrc_private` to set your zsh preferences
+
 ## Adding / Updating Files
 
 ```bash
