@@ -7,12 +7,12 @@
 [difftool]
   prompt = false
 [pull]
-	rebase = false
+  rebase = false
 [init]
-	defaultBranch = main
+  defaultBranch = main
 [merge]
-    command = "vim"
-    args = "-d"
+  command = "vim"
+  args = "-d"
 [core]
   excludesfile = .gitignore_global
 {{- if eq .chezmoi.username "nate" }}
@@ -20,7 +20,7 @@
 {{- end }}
 {{ if (eq .chezmoi.os "darwin") }}
 [credential]
-	helper = osxkeychain
+  helper = osxkeychain
 {{ else if (eq .chezmoi.os "linux" ) }}
 # linux
 {{ else }}
