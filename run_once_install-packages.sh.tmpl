@@ -1,14 +1,14 @@
-{{ if eq .chezmoi.os "linux" -}}
-
 #!/bin/sh
+
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+{{ if eq .chezmoi.os "linux" -}}
 
 sudo apt update
 sudo apt install ack fzf git git-delta grep htop neovim starship tmux tree vifm zsh
 sudo apt upgrade
 
 {{ else if eq .chezmoi.os "darwin" -}}
-
-#!/bin/sh
 
 brew install ack chezmoi fzf git git-delta grep htop mosh neovim starship tmux tree vifm youtube-dl zsh
 
