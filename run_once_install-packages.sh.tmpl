@@ -10,6 +10,8 @@ sudo apt upgrade
 
 {{ else if eq .chezmoi.os "darwin" -}}
 
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
 brew install ack chezmoi fzf git git-delta grep htop mosh neovim starship tmux tree vifm youtube-dl zsh
 
 {{ end -}}
