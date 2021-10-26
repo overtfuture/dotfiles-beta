@@ -11,5 +11,6 @@ sudo apt upgrade
 {{ else if eq .chezmoi.os "darwin" -}}
 
 brew install ack chezmoi fzf git git-delta grep htop mosh neovim starship tmux tree vifm youtube-dl zsh
+$(brew --prefix)/opt/fzf/install
 
 {{ end -}}
