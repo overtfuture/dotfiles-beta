@@ -33,7 +33,8 @@ require "paq" {
 	"neovim/nvim-lspconfig";          -- Mind the semi-colons
 	"hrsh7th/nvim-compe";
 	-- NerdTree
-	"kyazdani42/nvim-tree.lua";
+  {'kyazdani42/nvim-web-devicons'};
+  {'kyazdani42/nvim-tree.lua'};
 	-- Theme
 	"arcticicestudio/nord-vim";
 	-- Fuzzy File Finding
@@ -121,6 +122,11 @@ require'compe'.setup {
 
 -- File Tree
 map('', '<leader>d', ':NvimTreeToggle<cr>')
+require('nvim-tree').setup {
+    requires = {
+        'kyazdani42/nvim-web-devicons', -- optional, for file icon
+    }
+}
 
 -- Configs
 require('telescope-config')
