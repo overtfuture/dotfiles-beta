@@ -1,17 +1,10 @@
 #!/bin/sh
 
-sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-
 {{ if eq .chezmoi.os "linux" -}}
 
 sudo apt update
 sudo apt install ack fzf git git-delta grep htop neovim tmux tree zsh
 sudo apt upgrade
-
-# Install oh my zsh
-sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-# Install starhsip
-sh -c "$(curl -fsSL https://starship.rs/install.sh)"
 
 {{ else if eq .chezmoi.os "darwin" -}}
 
@@ -21,3 +14,8 @@ brew install ack chezmoi fzf git git-delta grep htop mosh neovim starship tmux t
 $(brew --prefix)/opt/fzf/install
 
 {{ end -}}
+
+# Install oh my zsh
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+# Install starship
+sh -c "$(curl -fsSL https://starship.rs/install.sh)"
