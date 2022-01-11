@@ -1,21 +1,22 @@
 #!/bin/sh
 
+# Install Homebrew
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
 {{ if eq .chezmoi.os "linux" -}}
 
 sudo apt update
 sudo apt install ack fzf git git-delta grep htop neovim tmux tree zsh
 sudo apt upgrade
 
+brew install starship k9s go
+
 {{ else if eq .chezmoi.os "darwin" -}}
 
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-
-brew install ack chezmoi fzf git git-delta grep htop mosh neovim starship tmux tree vifm youtube-dl zsh
+brew install ack chezmoi fzf git git-delta grep htop mosh neovim starship tmux tree zsh
 $(brew --prefix)/opt/fzf/install
 
 {{ end -}}
 
 # Install oh my zsh
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-# Install starship
-sh -c "$(curl -fsSL https://starship.rs/install.sh)"
