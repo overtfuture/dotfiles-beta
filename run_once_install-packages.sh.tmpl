@@ -6,10 +6,10 @@
 {{ if eq .chezmoi.os "linux" -}}
 
 sudo apt update
-sudo apt install ack fzf git grep htop neovim tmux tree zsh
+sudo apt install ack fzf git grep htop tmux tree zsh
 sudo apt upgrade
 
-/home/linuxbrew/.linuxbrew/bin/brew install starship k9s go
+/home/linuxbrew/.linuxbrew/bin/brew install starship k9s go neovim
 
 {{ else if eq .chezmoi.os "darwin" -}}
 
