@@ -1,12 +1,17 @@
 #!/bin/sh
 
 # Install Homebrew
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+if ! command -v brew &> /dev/null
+then
+    echo "brew could not be found, installing now"
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    exit
+fi
 
 {{ if eq .chezmoi.os "linux" -}}
 
 sudo apt update
-sudo apt install ack fzf git grep htop tmux tree zsh
+sudo apt install -y ack fzf git grep htop tmux tree zsh
 sudo apt upgrade
 
 /home/linuxbrew/.linuxbrew/bin/brew install starship k9s go neovim
@@ -19,4 +24,9 @@ $(brew --prefix)/opt/fzf/install
 {{ end -}}
 
 # Install oh my zsh
-sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+if [ ! -d "$HOME/.oh-my-zsh" ] 
+then
+    echo "Oh-My-Zsh is not installed, installing now" 
+    git clone https://github.com/ohmyzsh/ohmyzsh.git $HOME/.oh-my-zsh
+    chsh -s $(which zsh)
+fi
