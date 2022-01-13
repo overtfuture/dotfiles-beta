@@ -11,17 +11,24 @@ fi
 {{ if eq .chezmoi.os "linux" -}}
 
 sudo apt update
-sudo apt install -y ack fzf git grep htop tmux tree zsh
+sudo apt install -y ack git grep htop tmux tree zsh
 sudo apt upgrade
 
 /home/linuxbrew/.linuxbrew/bin/brew install starship k9s go neovim
 
 {{ else if eq .chezmoi.os "darwin" -}}
 
-brew install ack chezmoi fzf git git-delta grep htop mosh neovim starship tmux tree zsh
-$(brew --prefix)/opt/fzf/install
+brew install ack chezmoi git git-delta grep htop mosh neovim starship tmux tree zsh
 
 {{ end -}}
+
+# Install fzf
+if [ ! -d "$HOME/.fzf" ] 
+then
+    echo "fzf could not be found, installing now"
+    git clone --depth 1 https://github.com/junegunn/fzf.git $HOME/.fzf
+    $HOME/.fzf/install --bin
+fi
 
 # Install oh my zsh
 if [ ! -d "$HOME/.oh-my-zsh" ] 
