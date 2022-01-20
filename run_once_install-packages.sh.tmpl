@@ -17,9 +17,10 @@ sudo apt upgrade
 /home/linuxbrew/.linuxbrew/bin/brew install starship k9s go neovim
 
 {{ else if eq .chezmoi.os "darwin" -}}
-
-brew install ack chezmoi git git-delta grep htop mosh neovim starship tmux tree zsh
-
+for PACKAGE in ack chezmoi git git-delta grep htop mosh neovim starship tmux tree zsh
+do
+	brew list $PACKAGE || brew install $PACKAGE
+done
 {{ end -}}
 
 # Install TPM for tmux plugin management
