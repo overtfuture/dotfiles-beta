@@ -23,9 +23,8 @@ brew install ack chezmoi git git-delta grep htop mosh neovim starship tmux tree 
 {{ end -}}
 
 # Install TPM for tmux plugin management
-if [ ! -d "$HOME/.tmux/plugins" ] 
-    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-fi
+if "test ! -d ~/.tmux/plugins/tpm" \
+   "run 'git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm && ~/.tmux/plugins/tpm/bin/install_plugins'"
 
 # Install fzf
 if [ ! -d "$HOME/.fzf" ] 
