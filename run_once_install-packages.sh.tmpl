@@ -19,9 +19,9 @@ do
 done
 {{ end -}}
 
-# Install TPM for tmux plugin management
-if "test ! -d ~/.tmux/plugins/tpm" \
-   "run 'git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm && ~/.tmux/plugins/tpm/bin/install_plugins'"
+# # Install TPM for tmux plugin management
+# if "test ! -d ~/.tmux/plugins/tpm" \
+#    "run 'git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm && ~/.tmux/plugins/tpm/bin/install_plugins'"
 
 # Install fzf
 if [ ! -d "$HOME/.fzf" ] 
