@@ -18,7 +18,7 @@ test -d /home/linuxbrew/.linuxbrew && eval "$(/home/linuxbrew/.linuxbrew/bin/bre
 test -r ~/.bash_profile && echo "eval \"\$($(brew --prefix)/bin/brew shellenv)\"" >>~/.bash_profile
 echo "eval \"\$($(brew --prefix)/bin/brew shellenv)\"" >> $HOME/.profile
 
-/home/linuxbrew/.linuxbrew/bin/brew install starship neovim
+# /home/linuxbrew/.linuxbrew/bin/brew install starship neovim
 
 {{ else if eq .chezmoi.os "darwin" -}}
 for PACKAGE in ack chezmoi git git-delta grep htop mosh neovim starship tmux tree zsh
