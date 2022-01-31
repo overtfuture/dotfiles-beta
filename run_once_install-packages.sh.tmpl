@@ -3,8 +3,7 @@
 {{ if eq .chezmoi.os "linux" -}}
 
 sudo apt update
-sudo apt install -y ack git grep htop tmux tree zsh
-sudo apt upgrade
+sudo apt install -y ack git grep htop tmux tree zsh neovim
 
 {{ else if eq .chezmoi.os "darwin" -}}
 # Install Homebrew
