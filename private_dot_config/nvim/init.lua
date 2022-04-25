@@ -1,6 +1,5 @@
 require('config.options')
 require('config.mappings')
-require('config.theme')
 
 -- Completions
 local cmp = require'cmp'
@@ -74,3 +73,6 @@ require('lualine').setup {
 
 -- Set up all packages
 require('plugins')
+
+-- Set up the Theme
+require('config.theme')
