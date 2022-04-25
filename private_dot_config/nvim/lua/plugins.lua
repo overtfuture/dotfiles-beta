@@ -122,6 +122,6 @@ return require('packer').startup(function(use)
     use {
         "lervag/vimtex",
         opt = true
-    } -- Use braces when passing options
+    }
 
 end)
