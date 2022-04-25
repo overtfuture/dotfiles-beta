@@ -13,7 +13,7 @@ then
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
-for PACKAGE in ack chezmoi git git-delta grep htop mosh neovim starship tmux tree zsh
+for PACKAGE in ack chezmoi git git-delta grep htop mosh neovim starship tmux tree zsh code-minimap
 do
 	brew list $PACKAGE || brew install $PACKAGE
 done
@@ -37,4 +37,11 @@ then
     echo "Oh-My-Zsh is not installed, installing now" 
     git clone https://github.com/ohmyzsh/ohmyzsh.git $HOME/.oh-my-zsh
     chsh -s $(which zsh)
+fi
+
+# Install Packer NeoVim Package Management
+if [ ! -d "$HOME/.local/share/nvim/site/pack/packer/start/packer.nvim" ] 
+then
+    git clone --depth 1 https://github.com/wbthomason/packer.nvim\
+        $HOME/.local/share/nvim/site/pack/packer/start/packer.nvim
 fi
