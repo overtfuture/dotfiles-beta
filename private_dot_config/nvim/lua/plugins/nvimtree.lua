@@ -7,13 +7,6 @@ require("nvim-tree").setup({
         { key = "u", action = "dir_up" },
       },
     },
-    float = {
-      enable = false,
-      open_win_config = {
-        relative = "cursor",
-        border = "rounded",
-      },
-    },
   },
   renderer = {
     group_empty = true,
