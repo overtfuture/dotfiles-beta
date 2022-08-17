@@ -22,12 +22,3 @@ alias gitclean="git rm -r --cached .;ga ."
 if [ -f ~/.zshrc_private ]; then
   source ~/.zshrc_private
 fi
-
-# Homebrew zsh completions
-if type brew &>/dev/null
-then
-  FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
-
-  autoload -Uz compinit
-  compinit
-fi
