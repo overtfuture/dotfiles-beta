@@ -1,16 +1,14 @@
 export ZSH="$HOME/.oh-my-zsh"
 
+# Default Theme
 ZSH_THEME="imajes"
 
+# Plugins
 plugins=(git git-extras docker vi-mode marked2 node npm ng ssh-agent zsh-interactive-cd zsh-navigation-tools 1password)
 ZSH_DISABLE_COMPFIX=true
-source $ZSH/oh-my-zsh.sh
 
-if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='vim'
-else
-  export EDITOR='nvim'
-fi
+# Source oh my zsh
+source $ZSH/oh-my-zsh.sh
 
 # Aliases
 alias zshrc="nvim ~/.zshrc"
@@ -20,9 +18,16 @@ alias gitclean="git rm -r --cached .;ga ."
 # fzf Ctrl-R
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+# Source private customization
 if [ -f ~/.zshrc_private ]; then
   source ~/.zshrc_private
 fi
 
-autoload -U +X bashcompinit && bashcompinit
-complete -o nospace -C /opt/homebrew/bin/mc mc
+# Homebrew zsh completions
+if type brew &>/dev/null
+then
+  FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+
+  autoload -Uz compinit
+  compinit
+fi
