@@ -9,43 +9,64 @@ fi
 {{ if eq .chezmoi.os "linux" -}}
 
 sudo apt update
-sudo apt install -y ack git htop tmux tree zsh
+sudo apt install curl
+
+# 1Password CLI
+curl -sS https://downloads.1password.com/linux/keys/1password.asc | \
+ sudo gpg --dearmor --output /usr/share/keyrings/1password-archive-keyring.gpg
+
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/1password-archive-keyring.gpg] https://downloads.1password.com/linux/debian/$(dpkg --print-architecture) stable main" |
+ sudo tee /etc/apt/sources.list.d/1password.list
+
+sudo mkdir -p /etc/debsig/policies/AC2D62742012EA22/
+curl -sS https://downloads.1password.com/linux/debian/debsig/1password.pol | \
+sudo tee /etc/debsig/policies/AC2D62742012EA22/1password.pol
+sudo mkdir -p /usr/share/debsig/keyrings/AC2D62742012EA22
+curl -sS https://downloads.1password.com/linux/keys/1password.asc | \
+sudo gpg --dearmor --output /usr/share/debsig/keyrings/AC2D62742012EA22/debsig.gpg
+
+sudo apt update && sudo apt install 1password-cli
 
 {{ else if eq .chezmoi.os "darwin" -}}
 
 # Install Homebrew
 if [ ! command -v brew &> /dev/null ]; then
     eval "$(/opt/homebrew/bin/brew shellenv)"
+    # 1Password CLI
+    brew install --cask 1password/tap/1password-cli
 fi
 
 {{ end -}}
 
 # Brew packages
-for PACKAGE in ack chezmoi git git-delta gitui grep htop mosh neovim openssh starship tmux tree zsh code-minimap kubectl
+for PACKAGE in ack chezmoi git git-delta gitui grep htop neovim openssh starship tmux tree zsh kubectl
 
 do
 	brew list $PACKAGE || brew install $PACKAGE
 done
 
 # Install fzf
-if [ ! -d "$HOME/.fzf" ] 
-then
+if [ ! -d "$HOME/.fzf" ]; then
     echo "fzf could not be found, installing now"
     git clone --depth 1 https://github.com/junegunn/fzf.git $HOME/.fzf
     $HOME/.fzf/install --bin
 fi
 
 # Install oh my zsh
-if [ ! -d "$HOME/.oh-my-zsh" ] 
-then
+if [ ! -d "$HOME/.oh-my-zsh" ]; then
     echo "Oh-My-Zsh is not installed, installing now" 
     git clone https://github.com/ohmyzsh/ohmyzsh.git $HOME/.oh-my-zsh
     chsh -s $(which zsh)
 fi
 
 # Install Packer NeoVim Package Management
-if [ ! -d "$HOME/.local/share/nvim/site/pack/packer/start/packer.nvim" ] 
-then
+if [ ! -d "$HOME/.local/share/nvim/site/pack/packer/start/packer.nvim" ]; then
     git clone --depth 1 https://github.com/wbthomason/packer.nvim\
         $HOME/.local/share/nvim/site/pack/packer/start/packer.nvim
+fi
+
+# Setup 1Password SSH Agent
+if [ ! -d "$HOME/.1password"|| ! -f "$HOME/.1password/agent.sock"]; then
+    mkdir $HOME/.1password
+    ln -s $HOME/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock $HOME/.1password/agent.sock
 fi
