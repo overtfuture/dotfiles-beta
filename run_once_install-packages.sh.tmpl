@@ -77,9 +77,9 @@ if [ ! -d "$HOME/.local/share/nvim/site/pack/packer/start/packer.nvim" ]; then
 fi
 
 # Setup 1Password SSH Agent
-if [[ ! -d "$HOME/.1password"]] || [[ ! -f "$HOME/.1password/agent.sock"]]; then
+if [[ ! -d "$HOME/.1password" || ! -f "$HOME/.1password/agent.sock"]]; then
     mkdir $HOME/.1password
-    if [[ -f $HOME/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock ]] && [[ ! -f $HOME/.1password/agent.sock]]; then
+    if [[ -f $HOME/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock && ! -f $HOME/.1password/agent.sock]]; then
         ln -s $HOME/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock $HOME/.1password/agent.sock
     fi
 fi
