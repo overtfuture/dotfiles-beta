@@ -15,7 +15,7 @@ then
 fi
 
 sudo apt update
-sudo apt install -y curl git gpg
+sudo apt install -y curl git gpg kitty
 
 # 1Password CLI
 curl -sS https://downloads.1password.com/linux/keys/1password.asc | \
@@ -40,6 +40,8 @@ if [ ! command -v brew &> /dev/null ]; then
     eval "$(/opt/homebrew/bin/brew shellenv)"
     # 1Password CLI
     brew install --cask 1password/tap/1password-cli
+    # Kitty Terminal
+    brew install --cask kitty
 fi
 
 {{ end -}}
