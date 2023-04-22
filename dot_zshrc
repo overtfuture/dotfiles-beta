@@ -4,7 +4,7 @@ export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="imajes"
 
 # Plugins
-plugins=(git git-extras docker vi-mode marked2 node npm ng ssh-agent zsh-interactive-cd zsh-navigation-tools 1password)
+plugins=(1password brew docker fnm fzf git git-extras golang kubectl kubectx marked2 node npm vi-mode zsh-interactive-cd zsh-navigation-tools)
 ZSH_DISABLE_COMPFIX=true
 
 # Source oh my zsh
