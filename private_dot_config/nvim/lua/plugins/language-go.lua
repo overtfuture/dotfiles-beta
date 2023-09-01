@@ -8,6 +8,7 @@ return {
     config = function()
         require("go").setup({})
         require("go.format").goimport()  -- goimport + gofmt
+        require "configs.lsp-go"
     end,
     event = {"CmdlineEnter"},
     ft = {"go", 'gomod'},
