@@ -36,8 +36,7 @@ return {
                 group_empty = true
             },
             filters = {
-                dotfiles = true,
-                custom = {"^.git$"}
+                custom = { "\\.git$", "\\.pyc$", "__pycache__", ".DS_Store" },
             },
             on_attach = my_on_attach
         }
