@@ -6,7 +6,9 @@ k9s:
   logoless: false
   crumbsless: false
   readOnly: false
+  noExitOnCtrlC: false
   noIcons: false
+  skipLatestRevCheck: false
   logger:
     tail: 100
     buffer: 5000
@@ -14,26 +16,28 @@ k9s:
     fullScreenLogs: false
     textWrap: false
     showTime: false
-  currentContext: ""
-  currentCluster: ""
+  currentContext: minikube
+  currentCluster: minikube
   clusters:
-    "":
+    minikube:
       namespace:
         active: default
+        lockFavorites: false
         favorites:
         - default
       view:
-        active: po
+        active: context
       featureGates:
         nodeShell: false
       shellPod:
-        image: busybox:1.31
+        image: busybox:1.35.0
         command: []
         args: []
         namespace: default
         limits:
           cpu: 100m
           memory: 100Mi
+        labels: {}
       portForwardAddress: localhost
   thresholds:
     cpu:
@@ -42,3 +46,4 @@ k9s:
     memory:
       critical: 90
       warn: 70
+  screenDumpDir: /var/folders/kf/b_kflqzd7vn81ly9p02847nh0000gn/T/k9s-screens-nate
