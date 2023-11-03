@@ -91,3 +91,14 @@ if  [[ ! -f "$HOME/.1password/agent.sock" ]]; then
         ln -s $HOME/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock $HOME/.1password/agent.sock
     fi
 fi
+
+# Set up ZSH Packages
+if [ ! -d "$HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions" ]; then
+    echo "zsh-autosuggestions is not installed, cloning now" 
+    git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+fi
+
+if [ ! -d "$HOME/.oh-my-zsh/custom/plugins/zsh-completions" ]; then
+    echo "zsh-completions is not installed, cloning now" 
+    git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-completions
+fi

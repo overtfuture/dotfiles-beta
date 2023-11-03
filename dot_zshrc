@@ -4,14 +4,17 @@ export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="imajes"
 
 # Plugins
-plugins=(1password brew docker fnm fzf git git-extras golang kubectl kubectx marked2 node npm vi-mode zsh-interactive-cd zsh-navigation-tools)
+plugins=(1password brew docker fnm fzf git git-extras golang kubectl kubectx marked2 node npm vi-mode zsh-autosuggestions zsh-interactive-cd zsh-navigation-tools)
 ZSH_DISABLE_COMPFIX=true
+
+# zsh-completions
+fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 
 # Source oh my zsh
 source $ZSH/oh-my-zsh.sh
 
 # Aliases
-alias zshrc="nvim ~/.zshrc"
+alias zshrc="$EDITOR ~/.zshrc"
 alias c="clear"
 alias gitclean="git rm -r --cached .;ga ."
 
@@ -21,4 +24,9 @@ alias gitclean="git rm -r --cached .;ga ."
 # Source private customization
 if [ -f ~/.zshrc_private ]; then
   source ~/.zshrc_private
+fi
+
+# Source ShellHistoryApp
+if [ -f ~/.zshrc_shellhistory ]; then
+  source ~/.zshrc_shellhistory
 fi
