@@ -1,1 +1,8 @@
+# General
+*.log
+*.tmp
 .DS_Store
+Thumbs.db
+
+# Node.js
+node_modules/
